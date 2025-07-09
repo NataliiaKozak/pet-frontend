@@ -1,0 +1,61 @@
+* {
+
+  font-family: Montserrat, sans-serif;
+  /* font-size: 20px;
+  line-height: 26px;
+  font-weight: 500; */
+  
+}
+
+h2 {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 70.4px;
+  margin: 0 0 40px 0;
+}
+
+.globalContainer {
+  max-width: calc(1360px + (15px) * 2);
+  margin-inline: auto;
+  padding-inline: 15px;
+
+}
+
+.titleBlock h2 {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 70.4px;
+  margin: 0 0 10px 0;
+  white-space: nowrap;
+}
+
+.titleBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.titleBlockLine {
+  width: 100%;
+  height: 1px;
+  background-color: #DDDDDD;
+  margin-left: 32px;
+}
+
+.titleBlockButton {
+  font-size: 16px;
+  font-weight: 500;
+  
+  background-color: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-radius: 6px;
+  white-space: nowrap;
+  padding: 6px 16px;
+}
+
+.titleBlockButton:hover {
+  color: #8B8B8B;
+  background-color: #F1F3F4;
+}
+
