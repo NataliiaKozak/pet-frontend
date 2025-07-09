@@ -1,7 +1,8 @@
 import React from 'react'
 import CheckOutButton from '../../components/ui/CheckOutButton/CheckOutButton';
 import CategoriesBlock from '../../components/CategoriesBlock/CategoriesBlock';
-
+import DiscountForm from '../../components/DiscountForm/DiscountForm';
+// import SaleBlock from '../../components/SaleBlock/SaleBlock';
 
 import styles from '../../components/CategoriesBlock/CategoriesBlock.module.css';
 import backgroundImg from '../../assets/images/png/img.png';
@@ -21,6 +22,8 @@ const MainPage = () => {
       <div className={styles.mainBgStyle} style={{ backgroundImage: `url(${backgroundImg})` }}></div>
 
       <CategoriesBlock />
+      <DiscountForm />
+      {/* <SaleBlock /> */}
 
     </div>
   )
