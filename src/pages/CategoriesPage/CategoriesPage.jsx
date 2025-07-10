@@ -11,7 +11,7 @@ const CategoriesPage = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(`${API_URL}/products/all`)
+        const response = await axios.get(`${API_URL}/categories/all`)
         setCategories(response.data || [])
       } catch (error) {
         console.error('Error fetching categories:', error)
