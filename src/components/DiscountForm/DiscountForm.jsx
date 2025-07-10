@@ -5,6 +5,7 @@ import { openModal, closeModal } from '../../redux/slices/modalSlice'
 import GetDiscountButton from '../ui/GetDiscountButton/GetDiscountButton'
 import styles from './DiscountForm.module.css'
 import discountImage from '../../assets/images/svg/image.svg'
+import { API_URL } from '../../utils/api'
 
 const DiscountForm = () => {
   const [name, setName] = useState('')

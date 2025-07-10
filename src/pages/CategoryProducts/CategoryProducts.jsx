@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
@@ -7,12 +7,14 @@ import ProductCard from '../../components/ProductCard/ProductCard.jsx'
 import Filter from '../../components/Filter/Filter.jsx'
 import DiscountedItems from '../../components/DiscountedItems/DiscountedItems.jsx'
 import SelectSort from '../../components/SelectSort/SelectSort.jsx'
-import styles from './Products.module.css'
+import styles from './CategoryProducts.module.css'
 import { API_URL } from '../../utils/api.js'
 
-function Products() {
+const CategoryProducts = () => {
+  const { categoryId } = useParams()
   const [searchParams, setSearchParams] = useSearchParams()
   const [products, setProducts] = useState([])
+  const [categoryName, setCategoryName] = useState('')
   const [sortType, setSortType] = useState(
     searchParams.get('sortType') || 'default'
   )
@@ -25,11 +27,18 @@ function Products() {
       setError(null)
 
       try {
-        // const response = await axios.get("https://pet-shop-backend.slavab.kz/products/all");
-        const response = await axios.get(`${API_URL}/products/all`)
-        setProducts(response.data)
+        const response = await axios.get(
+          // `https://pet-shop-backend.slavab.kz/categories/${categoryId}`
+          `${API_URL}/categories/${categoryId}`
+        )
+        if (response.status === 200) {
+          setProducts(response.data.data)
+          setCategoryName(response.data.category.title)
+        } else {
+          setError('Failed to fetch products. Please try again later.')
+        }
       } catch (error) {
-        console.error(error)
+        console.error('Error fetching data:', error)
         setError('An error occurred fetching data. Please try again later.')
       } finally {
         setIsLoading(false)
@@ -37,21 +46,17 @@ function Products() {
     }
 
     fetchProducts()
-  }, [])
+  }, [categoryId])
 
   const filteredProducts = products
     .filter((product) => {
       const minPrice = parseFloat(searchParams.get('minPrice')) || 0
       const maxPrice = parseFloat(searchParams.get('maxPrice')) || Infinity
       const includeDiscount = searchParams.get('includeDiscount') === 'true'
+      const productPrice = product.discont_price || product.price
 
-      if (product.price < minPrice || product.price > maxPrice) {
-        return false
-      }
-
-      if (includeDiscount && !product.discont_price) {
-        return false
-      }
+      if (productPrice < minPrice || productPrice > maxPrice) return false
+      if (includeDiscount && !product.discont_price) return false
 
       return true
     })
@@ -65,15 +70,8 @@ function Products() {
       if (sortType === 'priceLowToHigh') {
         return (a.discont_price || a.price) - (b.discont_price || b.price)
       }
-      if (sortType === 'discountPriceHighToLow') {
-        return (b.discont_price || b.price) - (a.discont_price || a.price)
-      }
       return 0
     })
-
-  const addToCart = (product) => {
-    console.log('Added to cart:', product)
-  }
 
   if (isLoading) return <p>Loading...</p>
   if (error)
@@ -92,15 +90,20 @@ function Products() {
 
   return (
     <div className="globalContainer">
-      <div className={styles.allProductsPage}>
+      <div className={styles.productsByCategoryPage}>
         <Breadcrumbs
           items={[
             { path: '/', label: 'Main page' },
-            { path: '/categories', label: 'All products', isActive: true },
+            { path: '/categories', label: 'Categories' },
+            {
+              path: `/categories/${categoryId}`,
+              label: categoryName,
+              isActive: true,
+            },
           ]}
         />
-        <div className={styles.categoriesPageTitle}>
-          <h2>All products</h2>
+        <div className={styles.categoryPageTitle}>
+          <h2>{categoryName}</h2>
         </div>
         <div className={styles.filterContainer}>
           <Filter
@@ -127,7 +130,7 @@ function Products() {
               <ProductCard
                 key={product.id}
                 product={product}
-                addToCart={addToCart}
+                addToCart={(product) => console.log('Added to cart:', product)}
               />
             ))
           ) : (
@@ -139,4 +142,10 @@ function Products() {
   )
 }
 
-export default Products
+export default CategoryProducts
+
+
+
+
+
+

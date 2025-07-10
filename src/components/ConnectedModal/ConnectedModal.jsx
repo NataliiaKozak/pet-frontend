@@ -1,7 +1,6 @@
-import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { closeModal } from '../../redux/slices/modalSlice'
-import Modal from './Modal'
+import Modal from '../Modal/Modal'
 
 const ConnectedModal = () => {
   const modal = useSelector((state) => state.modal)

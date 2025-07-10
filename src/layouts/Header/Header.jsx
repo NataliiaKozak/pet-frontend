@@ -1,79 +1,75 @@
-import React from 'react'
-import Logo from '../../assets/images/svg/logo.svg'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import cartIcon from '../../assets/images/svg/basket=empty.svg'
+import Logo from '../../assets/images/svg/logo.svg'
 import styles from './Header.module.css'
-import cartIcon from '../../assets/images/svg/basket=empty.svg';
 
 const Header = () => {
   const cartItems = useSelector((state) => state.cart.items)
-
   const cartItemsCount = cartItems.reduce(
     (total, item) => total + item.quantity,
     0
   )
 
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
+
   return (
-    <header className={styles.header_wrapper}>
+    <header className={styles.Header}>
       <div className="globalContainer">
-        <div className={styles.header_content}>
-          
-          <NavLink to="/" className={styles.logo}>
-            <img src={Logo} alt="Pet Shop Logo" />
+        <div className={styles.headerContent}>
+          {/* Изменено: Link → NavLink */}
+          <NavLink to="/">
+            <img src={Logo} alt="Logo" />
           </NavLink>
 
-          
-          <nav className={styles.nav_block}>
-            <ul className={styles.nav_list}>
-              <li className={styles.nav_item}>
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    `${styles.nav_link} ${isActive ? styles.active : ''}`
-                  }
-                  end
-                >
+          <div
+            className={`${styles.burgerMenu} ${menuOpen ? styles.open : ''}`}
+            onClick={toggleMenu}
+          >
+            <span className={styles.burgerLine}></span>
+            <span className={styles.burgerLine}></span>
+            <span className={styles.burgerLine}></span>
+          </div>
+
+          <nav className={`${styles.navBlock} ${menuOpen ? styles.open : ''}`}>
+            <ul>
+              <li>
+                {/* Изменено: Link → NavLink */}
+                <NavLink to="/" className={styles.navLink}>
                   Main Page
                 </NavLink>
               </li>
-              <li className={styles.nav_item}>
-                <NavLink
-                  to="/categories"
-                  className={({ isActive }) =>
-                    `${styles.nav_link} ${isActive ? styles.active : ''}`
-                  }
-                >
+              <li>
+                {/* Изменено: Link → NavLink */}
+                <NavLink to="/categories" className={styles.navLink}>
                   Categories
                 </NavLink>
               </li>
-              <li className={styles.nav_item}>
-                <NavLink
-                  to="/products"
-                  className={({ isActive }) =>
-                    `${styles.nav_link} ${isActive ? styles.active : ''}`
-                  }
-                >
-                  All products
+              <li>
+                {/* Изменено: Link → NavLink */}
+                <NavLink to="/products" className={styles.navLink}>
+                  All Products
                 </NavLink>
               </li>
-              <li className={styles.nav_item}>
-                <NavLink
-                  to="/discounts"
-                  className={({ isActive }) =>
-                    `${styles.nav_link} ${isActive ? styles.active : ''}`
-                  }
-                >
-                  All sales
+              <li>
+                {/* Изменено: Link → NavLink */}
+                <NavLink to="/discounts" className={styles.navLink}>
+                  All Sales
                 </NavLink>
               </li>
             </ul>
           </nav>
 
-          
-          <NavLink to="/cart" className={styles.cart_link}>
-            <img src={cartIcon} alt="Shopping Cart" />
+          {/* Изменено: Link → NavLink */}
+          <NavLink to="/cart" className={styles.cartLink}>
+            <img src={cartIcon} alt="Cart" />
             {cartItemsCount > 0 && (
-              <span className={styles.cart_badge}>{cartItemsCount}</span>
+              <span className={styles.cartBadge}>{cartItemsCount}</span>
             )}
           </NavLink>
         </div>
