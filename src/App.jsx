@@ -28,8 +28,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/categories" element={<CategoriesPage/>} />
-          <Route path="/categories/:id" element={<CategoryProducts/>} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/categories/:id" element={<CategoryProducts />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<Product />} />
           <Route path="/discounts" element={<DiscountedPage />} />

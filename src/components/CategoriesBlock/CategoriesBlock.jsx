@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styles from './CategoriesBlock.module.css'
-// import '../../utils/api.js'
 import { API_URL } from '../../utils/api.js'
 
 const CategoriesBlock = () => {

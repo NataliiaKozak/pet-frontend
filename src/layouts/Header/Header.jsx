@@ -22,7 +22,6 @@ const Header = () => {
     <header className={styles.Header}>
       <div className="globalContainer">
         <div className={styles.headerContent}>
-          {/* Изменено: Link → NavLink */}
           <NavLink to="/">
             <img src={Logo} alt="Logo" />
           </NavLink>
@@ -39,25 +38,21 @@ const Header = () => {
           <nav className={`${styles.navBlock} ${menuOpen ? styles.open : ''}`}>
             <ul>
               <li>
-                {/* Изменено: Link → NavLink */}
                 <NavLink to="/" className={styles.navLink}>
                   Main Page
                 </NavLink>
               </li>
               <li>
-                {/* Изменено: Link → NavLink */}
                 <NavLink to="/categories" className={styles.navLink}>
                   Categories
                 </NavLink>
               </li>
               <li>
-                {/* Изменено: Link → NavLink */}
                 <NavLink to="/products" className={styles.navLink}>
                   All Products
                 </NavLink>
               </li>
               <li>
-                {/* Изменено: Link → NavLink */}
                 <NavLink to="/discounts" className={styles.navLink}>
                   All Sales
                 </NavLink>
@@ -65,7 +60,6 @@ const Header = () => {
             </ul>
           </nav>
 
-          {/* Изменено: Link → NavLink */}
           <NavLink to="/cart" className={styles.cartLink}>
             <img src={cartIcon} alt="Cart" />
             {cartItemsCount > 0 && (

@@ -27,7 +27,6 @@ const DiscountedPage = () => {
 
       try {
         const response = await axios.get(
-          // 'https://pet-shop-backend.slavab.kz/products/all'
           `${API_URL}/products/all`
         )
         const discountedProducts = response.data.filter(

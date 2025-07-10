@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs.jsx'
 import ProductCard from '../../components/ProductCard/ProductCard.jsx'
 import Filter from '../../components/Filter/Filter.jsx'
-import DiscountedItems from '../../components/DiscountedItems/DiscountedItems.jsx'
 import SelectSort from '../../components/SelectSort/SelectSort.jsx'
 import styles from './Products.module.css'
 import { API_URL } from '../../utils/api.js'
@@ -25,7 +24,6 @@ function Products() {
       setError(null)
 
       try {
-        // const response = await axios.get("https://pet-shop-backend.slavab.kz/products/all");
         const response = await axios.get(`${API_URL}/products/all`)
         setProducts(response.data)
       } catch (error) {
@@ -104,10 +102,6 @@ function Products() {
         </div>
         <div className={styles.filterContainer}>
           <Filter
-            searchParams={searchParams}
-            setSearchParams={setSearchParams}
-          />
-          <DiscountedItems
             searchParams={searchParams}
             setSearchParams={setSearchParams}
           />

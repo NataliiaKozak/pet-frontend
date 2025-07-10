@@ -44,7 +44,6 @@ const CategoriesPage = () => {
                 className={styles.categoryItem}
               >
                 <img
-                  // src={`https://pet-shop-backend.slavab.kz${category.image}`}
                   src={`${API_URL}${category.image}`}
                   alt={category.title}
                   className={styles.categoryImage}
