@@ -102,3 +102,9 @@
 .noDiscount .originalPrice {
   display: none;
 }
+
+.productCardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}

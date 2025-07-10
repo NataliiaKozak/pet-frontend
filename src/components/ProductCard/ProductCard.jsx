@@ -6,14 +6,17 @@ import AddBlueButton from '../ui/AddBlueButton/AddBlueButton'
 import styles from './ProductCard.module.css'
 import { API_URL } from '../../utils/api'
 
-
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch()
 
+  // Обработчик добавления в корзину с остановкой всплытия
   const handleAddToCart = () => {
+    e.stopPropagation() // Останавливаем всплытие, чтобы не срабатывал переход
+    e.preventDefault() // Дополнительная страховка
     dispatch(addToCart({ ...product, quantity: 1 })) // Добавляем товар с количеством 1
   }
 
+  // Расчет процента скидки
   const calculateDiscountPercentage = (price, discountPrice) => {
     if (price && discountPrice) {
       const discount = ((price - discountPrice) / price) * 100
@@ -23,24 +26,29 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <li className={styles.productCard}>
-      <div className={styles.productImageContainer}>
-        <img
-          src={`${API_URL}/${product.image}`} 
-          alt={product.title}
-          className={styles.productImage}
-        />
-        {product.discont_price && (
-          <div className={styles.discountFlag}>
-            -{calculateDiscountPercentage(product.price, product.discont_price)}
-            %
+    <Link to={`/products/${product.id}`} className={styles.productCardLink}>
+      <li className={styles.productCard}>
+        <div className={styles.productImageContainer}>
+          <img
+            src={`${API_URL}/${product.image}`}
+            alt={product.title}
+            className={styles.productImage}
+          />
+          {product.discont_price && (
+            <div className={styles.discountFlag}>
+              -
+              {calculateDiscountPercentage(
+                product.price,
+                product.discont_price
+              )}
+              %
+            </div>
+          )}
+          <div className={styles.addButtonContainer}>
+            <AddBlueButton onClick={handleAddToCart} />
           </div>
-        )}
-        <div className={styles.addButtonContainer}>
-          <AddBlueButton onClick={handleAddToCart} />
         </div>
-      </div>
-      <Link to={`/products/${product.id}`} className={styles.productLink}>
+        {/* <Link to={`/products/${product.id}`} className={styles.productLink}> */}
         <div className={styles.productInfo}>
           <h3 className={styles.productTitle}>{product.title}</h3>
           <div className={styles.priceContainer}>
@@ -56,8 +64,9 @@ const ProductCard = ({ product }) => {
             )}
           </div>
         </div>
-      </Link>
-    </li>
+        {/* </Link> */}
+      </li>
+    </Link>
   )
 }
 
