@@ -1,18 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-// // Функция для загрузки корзины из localStorage
-// const loadCartFromLocalStorage = () => {
-//   try {
-//     const serializedCart = localStorage.getItem('cart') // Получаем данные корзины из localStorage
-//     if (serializedCart) {
-//       return JSON.parse(serializedCart) // Парсим строку JSON и возвращаем объект
-//     }
-//   } catch (err) {
-//     console.error('Failed to load cart from localStorage', err) // Логируем ошибку, если парсинг или доступ к localStorage не удались
-//   }
-//   return { items: [] } // Возвращаем пустую корзину по умолчанию, если данных нет или произошла ошибка
-// }
-
 // Функция для загрузки корзины из localStorage
 const loadCartFromLocalStorage = () => {
   try {
@@ -110,7 +97,6 @@ export const {
   updateQuantity,
   removeItem,
   clearCart,
-//   setCategories // Добавляем экспорт нового действия ADDED
 } = cartSlice.actions
 
 // Экспортируем редьюсер по умолчанию

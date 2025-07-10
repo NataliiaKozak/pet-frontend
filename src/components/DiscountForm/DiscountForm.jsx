@@ -71,10 +71,7 @@ const DiscountForm = () => {
     setEmail('')
   }
 
-  //   const handleCloseModal = () => {
-  //     dispatch(closeModal());//Для закрытия (хотя в коде не используется напрямую)
-  //     clearForm();
-  //   };
+
 
   return (
     <div className="globalContainer">

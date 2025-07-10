@@ -23,9 +23,6 @@
 .contextContainer {
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center;
-  text-align: center; */
   gap: 16px;
 }
 
@@ -59,8 +56,3 @@
   color: #FFFFFF;
 }
 
-/* .homeButton:active {
-  background-color: #FFFFFF;
-  color: #282828;
-  border: 1px solid #282828;
-} */

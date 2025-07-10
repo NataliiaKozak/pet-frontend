@@ -1,9 +1,9 @@
 .Header {
-  border-bottom: 1px solid #DDDDDD;
+  border-bottom: 1px solid #dddddd;
 }
 
 .Header:hover {
-  background-color: #F1F3F4;
+  background-color: #f1f3f4;
 }
 
 .headerContent {
@@ -27,13 +27,12 @@
   margin: 0;
 }
 
-/* Изменено: .navLink a → .navLink */
 .navLink {
   text-decoration: none;
   color: black;
   font-size: 16px;
   padding: 16px 0;
-  display: block; /* Добавлено для корректного отображения */
+  display: block; 
 }
 
 .cartLink {
@@ -45,8 +44,8 @@
   position: absolute;
   top: 8px;
   right: 20px;
-  background-color: #0D50FF;
-  color: #FFFFFF;
+  background-color: #0d50ff;
+  color: #ffffff;
   border-radius: 50%;
   width: 26px;
   height: 26px;
@@ -69,7 +68,6 @@
     gap: 16px;
   }
 
-  /* Изменено: .navLink a → .navLink */
   .navLink {
     font-size: 14px;
     padding: 8px 0;
@@ -81,7 +79,6 @@
 }
 
 @media (max-width: 490px) {
-  /* Изменено: .navLink a → .navLink */
   .navLink {
     font-size: 6px;
   }

@@ -9,5 +9,5 @@ const store = configureStore({
   },
   devTools: true,
 })
-// devTools: process.env.NODE_ENV !== 'production', // Автоматическое включение только в development
+
 export default store
