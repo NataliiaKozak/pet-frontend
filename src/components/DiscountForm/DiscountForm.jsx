@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
-import { openModal, closeModal } from '../../redux/slices/modalSlice'
+import { openModal } from '../../redux/slices/modalSlice'
 import GetDiscountButton from '../ui/GetDiscountButton/GetDiscountButton'
 import styles from './DiscountForm.module.css'
 import discountImage from '../../assets/images/svg/image.svg'
@@ -70,8 +70,6 @@ const DiscountForm = () => {
     setPhone('')
     setEmail('')
   }
-
-
 
   return (
     <div className="globalContainer">

@@ -19,8 +19,8 @@ const ProductFilters = ({ onChange }) => {
   }
 
   return (
-    <div className="filtersContainer">
-      <label>
+    <div className={styles.filtersContainer}>
+      <label >
         Min price
         <input
           name="minPrice"
