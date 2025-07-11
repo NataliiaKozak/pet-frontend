@@ -10,7 +10,7 @@ import {
   updateQuantity,
 } from '../../redux/slices/cartSlice.jsx'
 import Counter from '../../components/Counter/Counter.jsx'
-import OrderButton from '../../components/ui/OrderButton/OrderButton.jsx'
+import OrderButton from '../../ui/OrderButton/OrderButton.jsx'
 import styles from './CartPage.module.css'
 import { API_URL } from '../../utils/api.js'
 

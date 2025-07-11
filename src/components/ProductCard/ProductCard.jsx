@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../redux/slices/cartSlice'
-import AddBlueButton from '../ui/AddBlueButton/AddBlueButton'
+import AddBlueButton from '../../ui/AddBlueButton/AddBlueButton'
 import styles from './ProductCard.module.css'
 import { API_URL } from '../../utils/api'
 

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 
-import AddBlueButton from '../../components/ui/AddBlueButton/AddBlueButton'
+import AddBlueButton from '../../ui/AddBlueButton/AddBlueButton'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 import Counter from '../../components/Counter/Counter'
 import styles from './Product.module.css'

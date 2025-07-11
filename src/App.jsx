@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Provider as ReduxProvider } from 'react-redux'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx'
-import ScrollToTopButton from './components/ui/ScrollToTopButton/ScrollToTopButton.jsx'
+import ScrollToTopButton from './ui/ScrollToTopButton/ScrollToTopButton.jsx'
 
 import Header from './layouts/Header/Header'
 import Footer from './layouts/Footer/Footer'

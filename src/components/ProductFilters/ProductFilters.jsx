@@ -1,7 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
 import styles from './ProductFilters.module.css'
 
-
 const ProductFilters = ({ onChange }) => {
   const [searchParams, setSearchParams] = useSearchParams()
 
@@ -19,7 +18,7 @@ const ProductFilters = ({ onChange }) => {
 
   return (
     <div className={styles.filtersContainer}>
-      <label >
+      <label>
         Min price
         <input
           name="minPrice"
