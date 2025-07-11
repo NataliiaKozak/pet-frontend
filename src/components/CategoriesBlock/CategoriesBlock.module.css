@@ -36,7 +36,6 @@
   line-height: 26px;
 }
 
-/* Медиа-запрос для экранов до 768px */
 @media (max-width: 768px) {
   .gridCategoriesContainer {
     grid-template-columns: repeat(2, 1fr);
@@ -52,7 +51,6 @@
   }
 }
 
-/* Медиа-запрос для экранов до 576px */
 @media (max-width: 576px) {
   .gridCategoriesContainer {
     grid-template-columns: repeat(1fr, 1fr);
@@ -66,10 +64,8 @@
   .categoryName {
     font-size: 16px;
   }
-  .categoriesBlock h2{}
 }
 
-/* Медиа-запрос для экранов до 350px */
 @media (max-width: 350px) {
   .categoriesBlock {
     margin-top: 40px;

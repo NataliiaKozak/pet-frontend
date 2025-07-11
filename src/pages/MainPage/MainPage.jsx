@@ -1,4 +1,3 @@
-import React from 'react'
 import CheckOutButton from '../../components/ui/CheckOutButton/CheckOutButton';
 import CategoriesBlock from '../../components/CategoriesBlock/CategoriesBlock';
 import DiscountForm from '../../components/DiscountForm/DiscountForm';

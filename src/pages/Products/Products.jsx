@@ -94,7 +94,6 @@ function Products() {
         <Breadcrumbs
           items={[
             { path: '/', label: 'Main page' },
-            // { path: '/categories', label: 'All products', isActive: true },
             { path: '/products', label: 'All products', isActive: true },
           ]}
         />

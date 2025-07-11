@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './GetDiscountButton.module.css';
 
 function GetDiscountButton({ onClick, disabled }) {
   const [state, setState] = useState('normal');
 
-  // Обработчик клика
-  const handleClick = (e) => {
+const handleClick = (e) => {
     if (disabled) return;
 
-    //Меняем состояние на 'added' (активирует стиль и меняет текст)
     setState('added');
     if (onClick) {
       onClick(e);

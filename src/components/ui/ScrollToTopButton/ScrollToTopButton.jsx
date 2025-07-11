@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -43,7 +43,7 @@ const ScrollToTopButton = () => {
         display: isVisible ? 'block' : 'none',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
         transition: 'opacity 0.3s',
-        zIndex: '1000',
+        zIndex: '200',
       }}
     >
       ↑

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../redux/slices/cartSlice'
@@ -9,14 +8,12 @@ import { API_URL } from '../../utils/api'
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch()
 
-  // Обработчик добавления в корзину с остановкой всплытия
   const handleAddToCart = () => {
-    e.stopPropagation() // Останавливаем всплытие, чтобы не срабатывал переход
-    e.preventDefault() // Дополнительная страховка
-    dispatch(addToCart({ ...product, quantity: 1 })) // Добавляем товар с количеством 1
+    e.stopPropagation()
+    e.preventDefault()
+    dispatch(addToCart({ ...product, quantity: 1 }))
   }
 
-  // Расчет процента скидки
   const calculateDiscountPercentage = (price, discountPrice) => {
     if (price && discountPrice) {
       const discount = ((price - discountPrice) / price) * 100
@@ -48,7 +45,6 @@ const ProductCard = ({ product }) => {
             <AddBlueButton onClick={handleAddToCart} />
           </div>
         </div>
-        {/* <Link to={`/products/${product.id}`} className={styles.productLink}> */}
         <div className={styles.productInfo}>
           <h3 className={styles.productTitle}>{product.title}</h3>
           <div className={styles.priceContainer}>
@@ -64,7 +60,6 @@ const ProductCard = ({ product }) => {
             )}
           </div>
         </div>
-        {/* </Link> */}
       </li>
     </Link>
   )

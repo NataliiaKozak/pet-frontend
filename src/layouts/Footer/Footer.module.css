@@ -59,7 +59,6 @@ iframe {
   clip-path: inset(0 round 16px);
 }
 
-/* Адаптивные стили */
 @media (max-width: 768px) {
   .gridContainer {
     grid-template-columns: 1fr;

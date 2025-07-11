@@ -42,5 +42,3 @@ const Counter = ({ quantity, setQuantity }) => {
 }
 
 export default Counter
-
-

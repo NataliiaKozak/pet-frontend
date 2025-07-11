@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { openModal } from '../../redux/slices/modalSlice'
@@ -15,11 +15,9 @@ const DiscountForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const dispatch = useDispatch()
 
-  //Обработчик отправки формы
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    // Проверка валидности и блокировка повторных отправок
     if (!isFormValid() || isSubmitting) {
       return
     }
@@ -36,26 +34,23 @@ const DiscountForm = () => {
       if (response.status === 200) {
         dispatch(
           openModal({
-            // Показываем модалку успеха
             title: 'Success',
             content: ['Your request has been submitted successfully!'],
           })
         )
-        // Помечаем форму как отправленную
         setIsSubmitted(true)
         clearForm()
       }
     } catch (error) {
       dispatch(
         openModal({
-          // Модалка ошибки
           title: 'Error',
           content:
             'There was an error submitting your request. Please try again later.',
         })
       )
     } finally {
-      setIsSubmitting(false) // Снимаем блокировку кнопки
+      setIsSubmitting(false)
     }
   }
 

@@ -10,7 +10,6 @@ const ConnectedModal = () => {
     dispatch(closeModal())
   }
 
-  // Проверяем, что modal.content существует и является массивом
   const content = Array.isArray(modal.content) ? modal.content : []
 
   return (

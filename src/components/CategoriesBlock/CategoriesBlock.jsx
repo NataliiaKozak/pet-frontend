@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styles from './CategoriesBlock.module.css'
@@ -19,15 +19,6 @@ const CategoriesBlock = () => {
     fetchCategories()
   }, [])
 
-  // useEffect(() => {
-  //   axios.get(`${API_URL}/categories/all`)
-  //     .then(response => {
-  //       this.setState({categories: response.data}) // setCategories(response.data)
-  //     })
-  //     .catch(error => {
-  //       console.error('There was an error fetching the categories!', error)
-  //     })
-  // }, [])
   return (
     <div className="globalContainer">
       <div className={styles.categoriesBlock}>

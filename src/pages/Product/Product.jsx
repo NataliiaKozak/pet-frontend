@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
@@ -11,59 +11,56 @@ import { addToCart } from '../../redux/slices/cartSlice'
 import { API_URL } from '../../utils/api'
 
 const Product = () => {
-  const { productId } = useParams() // Получаем параметр productId из URL
-  const [product, setProduct] = useState(null) // Состояние для хранения данных о продукте
-  const [categories, setCategories] = useState([]) // Состояние для хранения списка категорий
-  const [error, setError] = useState(null) // Состояние для хранения ошибки
-  const [isLoading, setIsLoading] = useState(true) // Состояние для отслеживания загрузки данных
-  const [quantity, setQuantity] = useState(1) // Состояние для хранения количества выбранного продукта
-  const dispatch = useDispatch() // Функция для отправки действий в Redux store
-  const [isExpanded, setIsExpanded] = useState(false) // Состояние для управления отображением полного описания продукта
+  const { productId } = useParams()
+  const [product, setProduct] = useState(null)
+  const [categories, setCategories] = useState([])
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [quantity, setQuantity] = useState(1)
+  const dispatch = useDispatch()
+  const [isExpanded, setIsExpanded] = useState(false)
 
   useEffect(() => {
     const fetchProductAndCategories = async () => {
-      // Функция для получения данных о продукте и категориях
       setIsLoading(true)
       setError(null)
       try {
         const productResponse = await axios.get(
           `${API_URL}/products/${productId}`
-        ) // Запрос данных о продукте
+        )
         if (productResponse.data && productResponse.data.length > 0) {
-          setProduct(productResponse.data[0]) // Устанавливаем данные продукта в состояние
+          setProduct(productResponse.data[0])
         } else {
           setProduct(null)
-          setError('Product not found.') // Устанавливаем ошибку, если продукт не найден
+          setError('Product not found.')
         }
 
-        const categoriesResponse = await axios.get(`${API_URL}/categories/all`) // Запрос данных о категориях
-        setCategories(categoriesResponse.data) // Устанавливаем список категорий в состояние
+        const categoriesResponse = await axios.get(`${API_URL}/categories/all`)
+        setCategories(categoriesResponse.data)
       } catch (error) {
         setError(
           'An error occurred while fetching product details. Please try again later.'
-        ) // Устанавливаем ошибку в случае неудачи запроса
+        )
       } finally {
-        setIsLoading(false) // Устанавливаем состояние загрузки в false после завершения запросов
+        setIsLoading(false)
       }
     }
 
-    fetchProductAndCategories() // Вызываем функцию для получения данных
-  }, [productId]) // useEffect срабатывает при изменении productId
+    fetchProductAndCategories()
+  }, [productId])
 
   const getCategoryName = (categoryId) => {
-    // Функция для получения названия категории по ее ID
     const category = categories.find((cat) => cat.id === categoryId)
     return category ? category.title : 'Unknown Category'
   }
 
   const handleAddToCart = () => {
-    // Функция для добавления продукта в корзину
     if (product) {
-      dispatch(addToCart({ ...product, quantity })) // Отправляем действие для добавления продукта в корзину
+      dispatch(addToCart({ ...product, quantity }))
     }
   }
 
-  if (isLoading) return <p>Loading...</p> // Отображаем сообщение о загрузке, если данные еще не получены
+  if (isLoading) return <p>Loading...</p>
   if (error)
     return (
       <div
@@ -78,7 +75,7 @@ const Product = () => {
       </div>
     )
 
-  if (!product) return <p>Product not found.</p> // Отображаем сообщение, если продукт не найден
+  if (!product) return <p>Product not found.</p>
 
   return (
     <div className="globalContainer">

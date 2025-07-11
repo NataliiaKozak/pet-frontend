@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styles from './OrderButton.module.css'
 
 function OrderButton({ onClick, disabled }) {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
@@ -13,11 +13,9 @@ const SaleBlock = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(`${API_URL}/products/all`)
-        // Фильтруем товары, чтобы оставить только те, у которых есть discont_price
         const discountedProducts = response.data.filter(
           (product) => product.discont_price
         )
-        // Ограничиваем количество товаров до 4
         setProducts(discountedProducts)
       } catch (error) {
         console.error('Error fetching products:', error)
